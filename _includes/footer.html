@@ -1,0 +1,99 @@
+{% comment %}
+    サイト全体のフッター（コンテンツ情報領域）。
+    - 住所、連絡先、SNSリンク、著作権、プライバシーポリシーリンクを格納。
+    - 構造化データ、A11yに配慮した設計。見出し階層をh3に修正済み。
+{% endcomment %}
+<footer class="site-footer" role="contentinfo">
+    <div class="inner footer-inner">
+
+        <!-- 1. 連絡先・所在地情報 -->
+        <address class="footer-contact">
+            <!-- 修正: h4 -> h3 (見出し階層の是正) -->
+            <h3>カウンセリングスペースpaz</h3>
+            <ul class="contact-list">
+                <!-- 住所 (Google Mapリンク) -->
+                <li>
+                    <a href="https://maps.app.goo.gl/t1y1e5s4A2bXj2d17" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Googleマップで所在地を開く：静岡県沼津市大手町4-3-28 リバーサイド大手町502">
+                        <span aria-hidden="true">📍</span> 
+                        静岡県沼津市大手町4-3-28 リバーサイド大手町502
+                    </a>
+                </li>
+                <!-- 電話 (tel:リンク) -->
+                <li>
+                    <a href="tel:+81559001615" aria-label="電話をかける：055-900-1615">
+                        <span aria-hidden="true">📞</span> 
+                        055-900-1615
+                    </a>
+                </li>
+                <!-- メール (mailto:リンク) -->
+                <li>
+                    <a href="mailto:info@counselingspacepaz.com" aria-label="メールを送信">
+                        <span aria-hidden="true">✉️</span> 
+                        info@counselingspacepaz.com
+                    </a>
+                </li>
+            </ul>
+        </address>
+
+        <!-- 2. SNSリンク -->
+        <nav class="footer-sns" aria-label="SNSリンク">
+            <!-- 修正: h4 -> h3 (見出し階層の是正) -->
+            <h3>SNSアカウント</h3>
+            <ul class="sns-list">
+                <!-- LINE -->
+                <li>
+                    <a href="https://lin.ee/KoUph8Z" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="LINE公式アカウントを開く (新しいウィンドウで開きます)">
+                        <!-- 修正: aria-hidden="true"を残し、altを削除し、純粋な装飾画像とする -->
+                        <img src="{{ '/images/icons/icon-line.png' | relative_url }}" aria-hidden="true">
+                    </a>
+                </li>
+                <!-- Instagram -->
+                <li>
+                    <a href="https://www.instagram.com/counselingspacepaz/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Instagramアカウントを開く (新しいウィンドウで開きます)">
+                        <!-- 修正: aria-hidden="true"を残し、altを削除し、純粋な装飾画像とする -->
+                        <img src="{{ '/images/icons/icon-instagram.png' | relative_url }}" aria-hidden="true">
+                    </a>
+                </li>
+                <!-- Facebook -->
+                <li>
+                    <a href="https://www.facebook.com/counselingspacepaz" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Facebookページを開く (新しいウィンドウで開きます)">
+                        <!-- 修正: aria-hidden="true"を残し、altを削除し、純粋な装飾画像とする -->
+                        <img src="{{ '/images/icons/icon-facebook.png' | relative_url }}" aria-hidden="true">
+                    </a>
+                </li>
+                <!-- X (旧Twitter) -->
+                <li>
+                    <a href="https://x.com/space_paz" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="X (旧Twitter) アカウントを開く (新しいウィンドウで開きます)">
+                        <!-- 修正: aria-hidden="true"を残し、altを削除し、純粋な装飾画像とする -->
+                        <img src="{{ '/images/icons/icon-x.png' | relative_url }}" aria-hidden="true">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 3. プライバシーポリシー & 著作権 -->
+        <div class="footer-meta">
+  <p class="footer-links">
+    <a href="{{ '/contents/privacy-policy-paz.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">
+      プライバシーポリシー✅
+    </a>
+  </p>
+  <p class="copyright">
+    <small>&copy; {{ site.time | date: '%Y' }} Counseling Space paz</small>
+  </p>
+</div>

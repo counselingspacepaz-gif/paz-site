@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ja' }}">
+<head>
+    <!-- 文字コード・ビューポート -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ SEOタグ：jekyll-seo-tagによる自動生成 -->
+    {% seo %}
+
+    <!-- 🌐 robots制御: production 以外で noindex を適用 -->
+    {% if jekyll.environment != 'production' %}
+    <meta name="robots" content="noindex">
+    {% endif %}
+
+    <!-- 🔗 Google Fonts: Zen Maru Gothic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- 🎨 CSS読み込み -->
+    <!-- 必須: キャッシュ破壊の算出に site.asset_version を適用 -->
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.asset_version }}">
+
+    <!-- 🖼️ favicon -->
+    <link rel="icon" href="{{ '/images/logo/favicon.ico' | relative_url }}">
+
+    <!-- 運用要件: Hero背景の適用（Liquidによる <style> 生成） -->
+    {% if page.hero_image and page.slug %}
+    <style>
+        .section--hero[data-page-slug="{{ page.slug }}"] { 
+            /* Hero画像パスは relative_url で処理 */
+            background-image: url('{{ page.hero_image | relative_url }}'); 
+        }
+    </style>
+    {% endif %}
+
+</head>
+
+<body>
+    <!-- 1. ヘッダー -->
+    <header class="site-header">
+        <div class="inner">
+            {% include header.html %}
+        </div>
+    </header>
+
+    <!-- 2. メインコンテンツ -->
+    <main class="site-content">
+        {{ content }}
+    </main>
+
+    <!-- 3. フッター -->
+   <footer class="site-footer">
+  <div class="inner">
+
+    <div class="footer-contact-info">
+      <p>〒410-0801 静岡県沼津市大手町4-3-28 リバーサイド大手町502</p>
+
+      <p>
+        TEL:
+        <a href="tel:0559001615">
+          055-900-1615
+        </a>
+      </p>
+
+      <p>
+        Email:
+        <a href="mailto:info@counselingspacepaz.com">
+          info@counselingspacepaz.com
+        </a>
+      </p>
+    </div>
+
+    <nav class="footer-sns" aria-label="SNSリンク">
+      <ul class="sns-list">
+        <li>
+          <a href="https://lin.ee/KoUph8Z" target="_blank" rel="noopener noreferrer">
+            <img src="{{ '/images/icons/icon-line.png' | relative_url }}" alt="LINE" aria-hidden="true">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/counselingspacepaz/" target="_blank" rel="noopener noreferrer">
+            <img src="{{ '/images/icons/icon-instagram.png' | relative_url }}" alt="Instagram" aria-hidden="true">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/counselingspacepaz" target="_blank" rel="noopener noreferrer">
+            <img src="{{ '/images/icons/icon-facebook.png' | relative_url }}" alt="Facebook" aria-hidden="true">
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/space_paz" target="_blank" rel="noopener noreferrer">
+            <img src="{{ '/images/icons/icon-x.png' | relative_url }}" alt="X" aria-hidden="true">
+          </a>
+        </li>
+      </ul>
+    </nav>
+ 
+   <p class="footer-links">
+  <a href="{{ '/contents/privacy-policy-paz.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">
+    プライバシーポリシー
+  </a>
+</p>
+
+    <p class="copyright">
+      <small>&copy; {{ site.time | date: '%Y' }} Counseling Space paz</small>
+    </p>
+
+  </div>
+</footer>
+
+    <!-- 4. JS読み込み（外部化＋defer） -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
+</body>
+</html>

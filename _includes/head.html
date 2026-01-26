@@ -1,0 +1,70 @@
+{% comment %}
+    サイトの <head> 要素テンプレート。
+    SEO、OGP、アクセシビリティ、パフォーマンス要件を満たす。
+{% endcomment %}
+
+<!-- 1. 基本メタ情報 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% comment %}
+    公開前は noindex, nofollow を有効化すること
+    <meta name="robots" content="noindex, nofollow">
+{% endcomment %}
+
+<!-- 2. SEO/OGPタグの自動生成 -->
+{% comment %}
+    Jekyll SEO Tag プラグインを使用
+    OGP画像が page.og_image で未定義の場合、
+    /images/sections/lavender-background.jpg をデフォルト画像として設定する。
+{% endcomment %}
+{% assign default_og_image = '/images/sections/lavender-background.jpg' | relative_url %}
+{% if page.og_image %}
+    {% seo %}
+{% else %}
+    {% seo image=default_og_image %}
+{% endif %}
+
+<!-- 3. Favicon (ロゴの「P」をモチーフにしたデザインを想定) -->
+<link rel="icon" type="image/x-icon" href="{{ '/images/logo/favicon.ico' | relative_url }}">
+
+<!-- 4. Google Fonts (パフォーマンス: Preconnectの適用) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- 5. CSS読み込み (キャッシュ破壊クエリ必須) -->
+{% comment %}
+    v=20251205 は設計書で指定されたバージョン
+{% endcomment %}
+<link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=20251205">
+
+<!-- 6. 構造化データ (Organization JSON-LD) -->
+{% comment %}
+    ページのヒーローセクションに Organization を定義するが、
+    ここではWebSite全体としての基本情報を定義する。
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Counseling Space paz",
+      "url": "https://counselingspacepaz.com",
+      "logo": "https://counselingspacepaz.com{{ '/images/logo/paz-logo.png' | relative_url }}",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+81-55-900-1615",
+          "contactType": "customer service",
+          "email": "paz@counselingspacepaz.com"
+        }
+      ]
+    }
+    </script>
+{% endcomment %}
+
+<!-- 7. JS読み込み (defer指定必須) -->
+{% comment %}
+    JSはdefer属性を付け、<body>閉じタグの直前で読み込むのが一般的だが、
+    ここでは指示に従い<head>内でdefer指定する。
+{% endcomment %}
+<script src="{{ '/assets/js/main.js' | relative_url }}?v=20251205" defer></script>

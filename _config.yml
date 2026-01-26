@@ -1,0 +1,42 @@
+# --- サイト基本設定 ---
+title: "Counseling Space paz"
+# 確定値: サイト設定のメールアドレス
+email: "info@counselingspacepaz.com"
+description: |
+  静岡県沼津市の女性と子どものためのカウンセリングスペースpaz。臨床心理士・公認心理師による、心の問題、育児、発達、家族関係の専門的な相談に対応しています。
+baseurl: "" # ルート配信のため空
+url: "https://counselingspacepaz.com" # 本番URL
+lang: "ja"
+timezone: "Asia/Tokyo"
+
+# --- ビルド設定 ---
+permalink: "pretty" # /folder/index.html 形式
+
+# --- Jekyllプラグイン ---
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# --- キャッシュバスター（site.asset_version）---
+# YYYYMMDD-N形式の固定値を推奨
+asset_version: "20251205-1" 
+
+# --- デフォルト設定 ---
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      # OGP未指定時の既定画像
+      image: "/images/hero/ogp-counseling-space-paz.png" 
+
+# --- コレクション (ブログ) ---
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+
+# --- 静的ファイル配信 ---
+include:
+  - contents

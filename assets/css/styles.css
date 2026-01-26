@@ -1,0 +1,878 @@
+/* ==========================================================================
+   1. Reset & Base
+   ========================================================================== */
+:root {
+    --color-primary: #91679e;   /* 濃ラベンダー (白文字比 4.53:1) */
+    --color-secondary: #6c7b52; /* 可読セージ (白背景比 4.57:1) */
+    --color-accent: #9b7aa5;    
+    --color-text: #222222;      
+    --color-bg-light: #f7f7f7;
+    --color-white: #ffffff;
+    --color-sage-bg: #a3b18a;   /* ヘッダー・モバイル背景 */
+    --color-footer-bg: #72547b; /* 修正：おすすめ配色 (白文字比 6.43:1) */
+    --font-primary: 'Zen Maru Gothic', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+body.no-scroll { overflow: hidden; }
+
+img { max-width: 100%; height: auto; vertical-align: middle; }
+
+a { color: var(--color-primary); text-decoration: none; transition: 0.2s; }
+a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--color-accent); 
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1.3; }
+
+.inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ==========================================================================
+   2. Components (Buttons)
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: none;
+}
+.btn--cta {
+    background: var(--color-primary);
+    color: var(--color-white) !important;
+}
+.btn--cta:hover {
+    background: #7d538a;
+    transform: translateY(-2px);
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   3. Header & Navigation
+   ========================================================================== */
+.site-header {
+    background: var(--color-sage-bg);
+    padding: 0.6rem 0;
+    position: relative;
+    z-index: 100;
+}
+.site-header .inner { display: flex; justify-content: space-between; align-items: center; min-height: 64px; }
+.site-title img { height: 48px; width: auto; display: block; }
+
+@media (min-width: 1024px) {
+    .site-nav ul { list-style: none; display: flex; gap: 1.2rem; }
+    .site-nav ul a { color: #222; font-weight: 700; padding: 0.5rem; border-radius: 6px; }
+    .site-nav ul a:hover { background: #fff; color: var(--color-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .nav-toggle { display: none; }
+}
+
+@media (max-width: 1023px) {
+    .site-nav ul { display: none; }
+    .site-nav.is-active ul {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100vh;
+        background: #8b9974; /* 修正：保険としてセージを少し暗く */
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 2.5rem;
+        z-index: 1000;
+    }
+    .site-nav.is-active ul a { font-size: 1.6rem; color: #fff; font-weight: 700; }
+}
+
+/* ==========================================================================
+   4. Hero Section (リズムと保守性の最終調律)
+   ========================================================================== */
+.section--hero {
+    position: relative;
+    height: 50vh;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 修正：二重表示の保険を適用 */
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* 常に1枚だけ表示 */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.88);
+    padding: 3.5rem 2rem; 
+    border-radius: 20px;
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem; /* 基本のリズム */
+}
+
+.hero__title { margin: 0; }
+.hero__subtitle { margin: 0; line-height: 1.8; color: var(--color-text); }
+
+/* 修正：間隔管理を gap 主体にし、マージンを適正化 */
+.hero__content .btn--cta {
+    margin-top: 1rem; /* gap(1.6) + 1.0 = 2.6rem で自然なリズムへ */
+    margin-bottom: 0; /* padding(3.5rem)で十分なため削除 */
+}
+
+.hero {
+    position: relative;
+    min-height: 60vh;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .hero__content {
+        padding: 2.75rem 1.5rem;
+        gap: 1.25rem;
+    }
+    .hero__content .btn--cta {
+        margin-top: 1.5rem; /* gap(1.25) + 1.5 = 2.75rem で保守性を確保 */
+    }
+}
+
+/* ==========================================================================
+   5. Tiles Section (足並み調整)
+   ========================================================================== */
+.section--tiles { padding: 5rem 0; background: var(--color-bg-light); }
+
+.section--tiles h2 {
+    text-align: center;
+    margin-bottom: 4.5rem; /* PC: 4.5rem */
+    font-size: 2rem;
+}
+@media (max-width: 1023px) { .section--tiles h2 { margin-bottom: 4.0rem; } } /* Tablet: 4.0rem */
+@media (max-width: 767px) { .section--tiles h2 { margin-bottom: 3.25rem; } } /* SP: 3.25rem */
+
+.tiles {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr; /* 修正：列の足並みを揃える */
+}
+
+@media (min-width: 768px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
+
+.tile {
+    background: var(--color-white);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+.tile:hover { transform: translateY(-6px); } /* 修正：-6px */
+
+.tile__image { height: 200px; width: 100%; object-fit: cover; }
+.tile__content { padding: 1.5rem; flex-grow: 1; }
+
+.tile--compliance {
+    background: var(--color-primary);
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+}
+.tile--compliance * { color: #fff !important; }
+
+/* ==========================================================================
+   6. Footer (最終配色・ホワイトリング)
+   ========================================================================== */
+.site-footer {
+    background: var(--color-footer-bg); /* #72547b */
+    color: var(--color-white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.site-footer a { color: #fff; text-decoration: underline; margin: 0 0.5rem; }
+
+/* フッター内限定の白リング */
+.site-footer a:focus-visible { outline-color: var(--color-white); }
+
+.copyright {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 1; /* 修正：不透明 */
+}
+
+/* ==========================================================================
+   Navigation: ハンバーガーを眠らせ、メニューを解放する
+   ========================================================================== */
+
+/* 1. トグルボタン（三本線）は、どの画面サイズでも完全に隠す */
+.nav-toggle {
+    display: none !important;
+}
+
+/* 2. メニュー本体：スマホで「消える」設定を上書きして常時表示 */
+.site-nav ul {
+    display: flex !important;   /* 強制表示 */
+    flex-direction: row;        /* 横並びを基本にする */
+    flex-wrap: wrap;            /* 画面が狭ければ自動で折り返す */
+    justify-content: center;    /* 中央寄せでバランスを取る */
+    gap: 0.8rem 1.2rem;         /* 項目間の余白（上下 左右） */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. リンクの調整：スマホで押しやすいサイズ感を維持 */
+.nav-link {
+    display: inline-block;
+    padding: 0.5rem 0.2rem;
+    text-decoration: none;
+    font-size: 0.9rem;          /* 6項目あるので少し控えめに */
+    white-space: nowrap;        /* 項目内で改行させない */
+}
+
+/* 4. PC（広い画面）での微調整：必要ならここで gap を広げる */
+@media (min-width: 1024px) {
+    .site-nav ul {
+        justify-content: flex-end; /* PCでは右寄せにしてロゴと距離を取る */
+        gap: 1.5rem;
+    }
+}
+
+/* 1. 邪魔なボタンを消去 */
+.nav-toggle, #menu-toggle {
+    display: none !important;
+}
+
+/* 2. メニューをルート基準で横並びに強制 */
+.site-nav .menu {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. リンクの可読性確保 */
+.site-nav .menu li a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    color: inherit; /* 既存の色設定を尊重 */
+}
+
+/* ロゴの大きさを強制的に上書きして黙らせる */
+.site-title img, .site-logo img {
+    width: 120px !important;
+    height: auto !important;
+}
+
+/* 2. Buttons (Lavender & Sage) */
+.btn--cta-lavender {
+    display: inline-block;
+    background-color: #E6E0F8; /* Lavender */
+    color: #5D5D5D;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid #E6E0F8;
+}
+.btn--cta-lavender:hover {
+    background-color: #8FA88A; /* Sage Green */
+    color: #fff;
+    border-color: #8FA88A;
+}
+
+/* 3. Pricing Section */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+.pricing-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.pricing-card h3 { 
+    font-size: 1.1rem; 
+    color: #8FA88A; 
+    margin-bottom: 10px; 
+}
+.pricing-card .price { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+}
+.pricing-card .price span { 
+    font-size: 0.9rem; 
+    font-weight: normal; 
+}
+.card-note { 
+    font-size: 0.8rem; 
+    margin-top: 10px; 
+    color: #777; 
+}
+.section-note {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 4. Notes Section */
+.section--notes { 
+    background: #EBE7F0; 
+    padding: 40px 0; 
+    margin: 40px 0; 
+}
+.notes-box {
+    background: #fff;
+    border-left: 5px solid #E6E0F8;
+    padding: 20px 30px;
+}
+.notes-highlight { 
+    font-weight: bold; 
+    color: #8FA88A; 
+    margin-bottom: 15px; 
+}
+.notes-list { 
+    list-style: disc; 
+    padding-left: 20px; 
+}
+
+/* 5. Policy Section */
+.section--policy { 
+    background: #EBE7F0; 
+    padding: 60px 0; 
+}
+.policy-header { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 30px; 
+    color: #8FA88A; 
+}
+.icon-clock { 
+    width: 32px; 
+    height: 32px; 
+}
+.policy-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.policy-item h3 { 
+    font-size: 1rem; 
+    border-bottom: 1px solid #E6E0F8; 
+    margin-bottom: 10px; 
+    padding-bottom: 5px; 
+}
+
+/* 6. FAQ Section (Keyboard Accessibility) */
+.faq-accordion details {
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+.faq-accordion summary {
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    list-style: none;
+}
+/* フォーカス時の強調 */
+.faq-accordion summary:focus {
+    outline: 2px solid #8FA88A;
+    outline-offset: -2px;
+}
+.faq-accordion summary::-webkit-details-marker { 
+    display: none; 
+}
+.faq-accordion .faq-answer { 
+    padding: 0 15px 15px; 
+    color: #666; 
+}
+
+/* 7. Bottom CTA */
+.section--bottom-cta {
+    background: #EBE7F0;
+    text-align: center;
+    padding: 60px 0;
+    margin-top: 60px;
+}
+.contact-info-small { 
+    margin-top: 30px; 
+    font-size: 0.9rem; 
+    color: #666; 
+}
+
+/* 料金表セクションの頭に余白を作る */
+.section--pricing {
+    padding-top: 80px !important; /* 上に十分な空き地を作る */
+}
+
+/* ついでに、各セクション同士の間隔も整えておこう */
+.booking-page .section {
+    padding-bottom: 60px;
+}
+
+/* --- FAQセクションの余白調整：書き換え --- */
+
+.section--faq {
+    /* 上のセクションとの間にしっかり余白を作る */
+    padding-top: 80px !important; 
+    padding-bottom: 40px;
+}
+
+/* ついでに「よくあるご質問」の見出し自体の下も少し空けておこう */
+.section--faq h2.section__title {
+    margin-bottom: 40px;
+}
+
+/* --- Bottom CTA: Final Version --- */
+
+.section--bottom-cta {
+    background-color: #EBE7F0 !important;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* 各行を中央に寄せて横並びにする */
+.cta-secondary-action, 
+.contact-info-small p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* アイコンと文字の間隔 */
+    margin: 15px 0;
+}
+
+/* リンクの色と装飾 */
+.line-text-link,
+.contact-link {
+    text-decoration: none;
+    color: var(--color-primary) !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 電話番号のテキスト */
+.contact-info-small p {
+    color: var(--color-primary) !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* LINEアイコンのサイズ固定 */
+.line-icon-small {
+    width: 24px !important;
+    height: auto !important;
+}
+
+/* 絵文字のサイズ調整（画像アイコンと揃える） */
+.emoji {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* 注釈 */
+.contact-info-small small {
+    display: block;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 予約カード全体のセクション */
+.section--booking-card {
+    padding: 120px 20px; /* 前後の余白を大幅に増やして「呼吸」させる */
+    background-color: #F9F7FC; /* 非常に薄い紫でFAQとの調和を図る */
+}
+
+/* 予約カード本体 */
+.feature-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    padding: 60px 40px;
+    border-radius: 12px; /* 少し丸みを強めて優しく */
+    box-shadow: 0 10px 30px rgba(120, 100, 140, 0.08); /* 繊細な影で浮遊感を出す */
+}
+
+/* カード内の見出し */
+.feature-card__title {
+    font-size: 1.5rem;
+    color: #5D5467; /* 少し落ち着いた濃紫 */
+    margin-bottom: 24px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* カード内の説明文 */
+.feature-card__text {
+    font-size: 1rem;
+    color: #777777;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* ボタン周り */
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-note {
+    font-size: 0.85rem;
+    color: #9E97A6;
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+}
+
+/* ボトムCTA（問い合わせ） */
+.section--bottom-cta {
+    padding: 100px 20px;
+    background-color: #EBE7F0; /* FAQと同じ色、またはさらに一段濃い色 */
+    text-align: center;
+}
+
+.cta-secondary-action {
+    margin-bottom: 60px;
+}
+
+.line-text-link {
+    font-size: 1.1rem;
+    color: #6B6176;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.line-text-link:hover {
+    opacity: 1;
+}
+
+.contact-info-small {
+    color: #8B8196;
+    line-height: 2;
+}
+
+/* ==========================================================================
+   Footer Redesign: Refined SNS Section
+   - 縦並びと巨大化を解消し、洗練された横並びへ
+   ========================================================================== */
+
+/* SNSナビゲーション全体のコンテナ */
+.footer-sns {
+    margin: 3rem 0; /* 上下の連絡先・コピーライトとの距離をしっかり取る */
+}
+
+/* リストの初期化：ドットを消し、横並びにする */
+.sns-list {
+    display: flex;
+    justify-content: center; /* 中央に寄せる */
+    align-items: center;
+    list-style: none !important; /* 左のドットを強制的に消去 */
+    padding: 0;
+    margin: 0;
+}
+
+/* 各リスト項目の間隔 */
+.sns-list li {
+    margin: 0 15px; /* アイコン同士の左右のゆとり */
+    padding: 0;
+}
+
+/* リンク自体の調整 */
+.sns-list a {
+    display: block;
+    text-decoration: none !important; /* 下線を完全に抹消 */
+    border: none !important;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ホバー時に少しだけ浮かせる（オシャレな演出） */
+.sns-list a:hover {
+    transform: translateY(-3px);
+    opacity: 0.7;
+}
+
+/* アイコン画像のサイズを厳格に固定 */
+.sns-list img {
+    width: 32px;  /* 控えめで上品なサイズ */
+    height: 32px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1); /* アイコンを白一色にして清潔感を出す（元の色が良ければ削除可） */
+}
+
+/* モバイル対応：さらに押しやすく */
+@media screen and (max-width: 480px) {
+    .sns-list {
+        gap: 10px;
+    }
+    .sns-list img {
+        width: 28px; /* スマホでは一回り小さく */
+        height: 28px;
+    }
+}
+
+/* SNSアイコン：透過させた白で統一 */
+.site-footer .sns-list img {
+    filter: brightness(0) invert(1); /* 完全に白へ変換 */
+    opacity: 0.6; /* ここで「真っ白すぎない」ように調整している（0.6〜0.7がおすすめ） */
+    transition: all 0.3s ease;
+}
+
+/* ホバーした時だけ、はっきりとした白にする */
+.site-footer .sns-list a:hover img {
+    opacity: 1;
+    transform: scale(1.1); /* ほんの少し大きくして、選んでいる感を出す */
+}
+
+
+/* ==========================================================================
+   Empathy Section: Final Optimized Layout
+   ========================================================================== */
+
+/* --- 全体共通 --- */
+.empathy-final {
+    background-color: #fff !important;
+    width: 100% !important;
+    margin-top: 4rem; 
+}
+
+.empathy-final__container {
+    display: flex;
+    flex-direction: column; /* スマホ：縦積み */
+    width: 100%;
+}
+
+/* --- スマホ (SP)：縦没入・比率維持 --- */
+.empathy-final__image-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SPのみ比率ボックス(3:4)を適用 */
+.empathy-final__image-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 133.33%; /* 3:4 比率 */
+}
+
+.empathy-final__image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 被写体を中央に固定し、安心感を確保 */
+    object-position: 10% center; 
+}
+
+/* テキストエリア */
+.empathy-final__content {
+    padding: 3.5rem 1.5rem;
+}
+
+/* --- PC (768px以上)：比率解除・追従・静謐 --- */
+@media screen and (min-width: 768px) {
+    .empathy-final__container {
+        flex-direction: row; /* 横並び */
+        align-items: stretch; /* 右のテキスト量に高さを同期 */
+    }
+
+    .empathy-final__image-wrapper {
+        flex: 0 0 40%; /* 画像幅 40% 固定 */
+        height: auto;
+    }
+
+    /* PCでは比率ボックスを解除：ここが最重要 */
+    .empathy-final__image-wrapper::before {
+        display: none !important;
+    }
+
+    /* 画像の配置をリセットし、親の高さ(stretch)に追従させる */
+    .empathy-final__image-wrapper img {
+        position: relative; /* absolute解除 */
+        height: 100%; /* 親の高さに合わせる */
+        width: 100%;
+    }
+
+    .empathy-final__content {
+        flex: 0 0 60%; /* テキスト幅 60% 固定 */
+        padding: 5rem 4.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   Philosophy Overlay Section - Final Master Version
+   ========================================================================== */
+
+/* 1. 親要素：セクション全体の枠組み。上のセクションとの距離（margin）を確保 */
+.philosophy-overlay {
+    position: relative;
+    width: 100%;
+    min-height: 90vh; /* 高さをしっかり出して、重心を下げる余白を作る */
+    overflow: hidden;
+    background-color: #fff;
+    margin-top: 6rem !important; /* 上のボタンとの衝突を避ける「静寂」の余白 */
+}
+
+/* 2. 背景画像：親の背後に絶対配置で固定。ズレの根源を断つ */
+.philosophy-overlay__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.philosophy-overlay__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 3. 白いカーテン：画像の上にピッタリ重ね、中身を「中央〜下」に配置 */
+.philosophy-overlay__content {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    
+    display: flex;
+    align-items: center; /* 中央に配置した上で、下のmarginで重心を微調整する */
+    justify-content: center;
+    
+    /* 相棒推奨の、背景を殺さない絶妙な白 */
+    background: rgba(255, 255, 255, 0.55) !important; 
+}
+
+/* 4. 文字の箱：上からの大きな余白で、重心をどっしり下へ押し下げる */
+.philosophy-overlay__inner {
+    max-width: 800px;
+    width: 100%;
+    padding: 2rem;
+    
+    /* 【最重要】ここを調整してお前の理想の高さにする */
+    margin-top: 12rem !important;  /* 上を大きく開けて、文字を下げ、画像を見せる */
+    padding-bottom: 6rem !important; /* 下のフッターとの緩衝材 */
+    
+    text-align: center;
+}
+
+/* 5. キャッチコピー：影を捨て、墨色で輪郭を際立たせる */
+.philosophy-overlay__lead {
+    color: #332f3a !important; 
+    text-shadow: none !important; 
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 3.5rem;
+    line-height: 1.8;
+    font-weight: 700 !important;
+}
+
+/* 6. 本文：読みやすさを最優先した濃度100% */
+.philosophy-overlay__text p {
+    font-size: 1rem;
+    line-height: 2.2; /* 少し広げて読みやすく */
+    margin-bottom: 1.5rem;
+    color: #443f4d !important;
+    font-weight: 500;
+}
+
+/* 7. 最後の一文：視線の着地点 */
+.philosophy-overlay__footer {
+    margin-top: 4rem;
+    Margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #5d5467 !important;
+    font-weight: 600 !important;
+    display: block;
+}
+
+/* 8. モバイル対応：スマホでの「美しさ」と「読みやすさ」を両立 */
+@media screen and (max-width: 767px) {
+    .philosophy-overlay {
+        min-height: auto;
+        margin-top: 3rem !important;
+    }
+    .philosophy-overlay__image,
+    .philosophy-overlay__content {
+        position: relative; /* スマホでは安全のため縦並びに */
+        height: auto;
+    }
+    .philosophy-overlay__image {
+        max-height: 40vh;
+    }
+    .philosophy-overlay__content {
+        background: #fff !important;
+        padding: 3rem 1.5rem;
+    }
+    .philosophy-overlay__inner {
+        margin-top: 0 !important; /* スマホでは上余白は不要 */
+        padding-bottom: 2rem !important;
+    }
+    .philosophy-overlay__lead {
+        font-size: 1.4rem;
+    }
+}

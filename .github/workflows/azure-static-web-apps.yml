@@ -1,0 +1,107 @@
+name: Build & Deploy Jekyll to Azure Static Web Apps
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# 💡 堅牢化: 同一ワークフローの実行を制御 (トップレベルに配置)
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# 💡 堅牢化: 最小権限の原則に従う
+permissions:
+  contents: read
+
+jobs:
+  # ----------------------------------------------------
+  # JOB 1: ビルド (出力を Artifact フォルダ直下へ一元化)
+  # ----------------------------------------------------
+  build:
+    runs-on: ubuntu-22.04 # 安定したランナーを指定
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby Environment
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true # Gemfile.lock に基づき依存関係をキャッシュ
+
+      - name: Clean and Install Dependencies
+        run: |
+          bundle clean --force # 古い依存関係を強制削除
+          bundle install # 依存関係を再インストール
+          
+      - name: Display Environment Info (for Debugging)
+        # 💡 NEW: ログの可視化を強化
+        run: |
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          echo "Current PWD: $(pwd)"
+          echo "--- _config.yml (Top 80 lines) ---"
+          sed -n '1,80p' _config.yml
+          echo "-----------------------------------"
+          find "$GITHUB_WORKSPACE" -maxdepth 2 -type f -name "index.*" # ルートの index.* ファイルを確認
+
+      - name: Build Jekyll Site (Output to Artifact Folder)
+        # 💥 修正: Jekyllの出力を Artifact名と同じフォルダに直接出力し、パスを単一化
+        env:
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build --config _config.yml --baseurl "" --destination jekyll-site-artifact --trace
+
+      - name: Verify Build Output (Absolute Path Check)
+        # 💥 修正: ビルドの成功を絶対パスで検証し、パスのズレを根絶する
+        run: |
+          TARGET_PATH="$GITHUB_WORKSPACE/jekyll-site-artifact/index.html"
+          echo "Checking for index.html at: $TARGET_PATH"
+          if [ ! -f "$TARGET_PATH" ]; then # 💡 NEW: 変数を引用符で囲み堅牢化
+            echo "Error: $TARGET_PATH not found after Jekyll build."
+            echo "Jekyll build failed to create the root index file. Check your Jekyll configuration or source files."
+            exit 1
+          fi
+          ls -la jekyll-site-artifact
+          
+      - name: Upload Jekyll Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jekyll-site-artifact
+          # 💡 修正: 出力先が jekyll-site-artifact なので、そのディレクトリ全体をアップロード
+          path: jekyll-site-artifact
+          if-no-files-found: error
+          
+  # ----------------------------------------------------
+  # JOB 2: デプロイ (Artifact をアプリとして参照)
+  # ----------------------------------------------------
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: build
+    
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jekyll-site-artifact
+          path: jekyll-site-artifact # ダウンロード先は Artifact 名と同じ
+          
+      - name: Verify Artifact Content (Final Check)
+        # 💡 堅牢化: デプロイ直前に最終パスを確認
+        run: |
+          echo "--- Content of Downloaded Artifact Folder ---"
+          ls -la jekyll-site-artifact
+          echo "---------------------------------------------"
+
+      # SWAにデプロイ
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          # 💥 修正: app_location で Artifact の直下を指定
+          # Jekyllの成果物が jekyll-site-artifact フォルダの直下にすべて入っているため、これが正解
+          app_location: "jekyll-site-artifact" 
+          # 💡 修正: output_location: "" を削除し、意図しない既定値の解釈を避ける
+          api_location: ""
+          skip_app_build: true
+          action: "upload"
