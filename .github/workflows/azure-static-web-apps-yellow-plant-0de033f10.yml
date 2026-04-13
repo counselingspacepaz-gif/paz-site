@@ -14,18 +14,23 @@ jobs:
         with:
           submodules: true
 
-      # Ruby 3.1 のセットアップ
+      # Ruby 3.1 のセットアップ（キャッシュは一旦OFF）
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-          bundler-cache: true
+          bundler-cache: false
 
-      # GitHub Actions 上で Jekyll ビルドを実行
+      # Bundler バージョンを明示的に固定してインストール
+      - name: Install specific Bundler
+        run: |
+          gem install bundler -v 2.6.9
+
+      # バージョンを指定して Jekyll ビルドを実行
       - name: Build Jekyll
         run: |
-          bundle install
-          bundle exec jekyll build
+          bundle _2.6.9_ install
+          bundle _2.6.9_ exec jekyll build
 
       # Azure Static Web Apps へ成果物をアップロード
       - name: Deploy to Azure SWA
@@ -36,4 +41,5 @@ jobs:
           action: "upload"
           app_location: "/"
           api_location: ""
-          output_location: "_site" # Jekyll のビルド成果物を指定
+          output_location: "_site"
+          skip_app_build: true
