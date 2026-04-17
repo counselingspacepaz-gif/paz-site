@@ -38,4 +38,3 @@ jobs:
           app_location: "/paz-site"
           output_location: "_site"
           skip_app_build: true
-``
