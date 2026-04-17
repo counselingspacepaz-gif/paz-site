@@ -7,43 +7,35 @@ on:
 
 jobs:
   build_and_deploy_job:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Build and Deploy
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
 
-      # Ruby 3.1 のセットアップ
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
-          bundler-cache: false
+          ruby-version: '3.3'
+          bundler: '2.6.9'
+          bundler-cache: true
 
-      # Bundler 2.6.9 を明示的にインストール
-      - name: Install specific Bundler
+      - name: Set locale
         run: |
-          gem install bundler -v 2.6.9
+          echo "LANG=ja_JP.UTF-8" >> $GITHUB_ENV
+          echo "LC_ALL=ja_JP.UTF-8" >> $GITHUB_ENV
 
-      # 日本語環境を明示し、Bundler 2.6.9 を使ってビルド
       - name: Build Jekyll
         run: |
-          bundle _2.6.9_ install
-          bundle _2.6.9_ exec jekyll build
-        env:
-          LANG: ja_JP.UTF-8
-          LANGUAGE: ja_JP:ja
-          LC_ALL: ja_JP.UTF-8
+          cd paz-site
+          bundle exec jekyll build
 
-      # Azure Static Web Apps へ成果物をアップロード
-      - name: Deploy to Azure SWA
-        id: builddeploy
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_PLANT_0DE033F10 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/"
-          api_location: ""
+          app_location: "/paz-site"
           output_location: "_site"
           skip_app_build: true
+``
