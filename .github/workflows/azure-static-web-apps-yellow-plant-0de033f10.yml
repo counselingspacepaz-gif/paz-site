@@ -22,20 +22,21 @@ jobs:
           bundler: '2.6.9'
           bundler-cache: false
 
-      - name: Debug build output
-        run: |
-            pwd
-            ls -la
-            bundle exec jekyll build --verbose
-            find . -maxdepth 3 -type d -name "_site"
-
       - name: Configure Environment
         run: |
           echo "LANG=ja_JP.UTF-8" >> $GITHUB_ENV
           echo "LC_ALL=ja_JP.UTF-8" >> $GITHUB_ENV
 
-      - name: Build Jekyll
-        run: bundle exec jekyll build
+      - name: Install gems and Build Jekyll
+        run: |
+          bundle install
+          bundle exec jekyll build --verbose
+
+      - name: Debug build output
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 3 -type d -name "_site"
 
       - name: Build And Deploy
         uses: Azure/static-web-apps-deploy@v1
