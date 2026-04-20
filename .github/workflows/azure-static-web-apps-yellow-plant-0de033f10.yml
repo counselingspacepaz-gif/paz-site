@@ -20,7 +20,7 @@ jobs:
         with:
           ruby-version: '3.3'
           bundler: '2.6.9'
-          bundler-cache: true
+          bundler-cache: false
 
       - name: Debug build output
         run: |
