@@ -9,7 +9,7 @@ jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    # 1. システム標準のUTF-8ロケールを使用し、日本語解釈の基盤を作る
+    # 1. 日本語（UTF-8）を正しく扱うための環境定義
     env:
       LANG: C.UTF-8
       LC_ALL: C.UTF-8
@@ -28,7 +28,7 @@ jobs:
           bundler-cache: true
 
       - name: Build Jekyll
-        # 2. Ruby実行オプションでUTF-8を強制し、Jekyllのエンコードエラーを封殺
+        # 2. Ruby実行時にもUTF-8を強制し、あの「\xE3」の呪いを封殺する
         env:
           JEKYLL_ENV: production
           RUBYOPT: "-EUTF-8:UTF-8"
@@ -42,9 +42,9 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          # 3. Jekyllが生成した完成品（_site）を正確に指定
-          app_location: "_site"
+          # 3. エスティニアンと合意した、迷いのない配置指定
+          app_location: "/"         # リポジトリルートを起点に
+          output_location: "_site"  # Jekyllが生成した成果物を狙い撃つ
           api_location: ""
-          output_location: ""
-          # 4. Azure側の余計なビルド（Oryx）をスキップさせ、二重ビルドを阻止
+          # 4. 二重ビルドによる10分のタイムアウトを回避する絶対命令
           skip_app_build: true
