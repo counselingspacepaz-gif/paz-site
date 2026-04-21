@@ -7,8 +7,9 @@ hero_image: /images/hero/sprout-in-hand.jpg
 slug: home
 ---
 
-<section class="hero hero--home section section--hero" data-page-slug="{{ page.slug }}">
-  <div class="hero__bg" style="background-image: url('{{ page.hero_image | relative_url }}');"></div>
+<section class="hero hero--home section section--hero" data-page-slug="{{ page.slug | strip }}">
+  {% assign hero_img_path = page.hero_image | relative_url | strip %}
+  <div class="hero__bg" style="background-image: url('{{ hero_img_path }}');"></div>
 
   <div class="hero__content inner">
     <h1 class="hero__title">カウンセリングスペースpaz</h1>
@@ -19,11 +20,11 @@ slug: home
 
     <p class="hero__text">pazとは平和・安らぎという意味です</p>
 
-   <a href="{{ '/booking/' | relative_url }}"
-   class="btn btn--cta"
-   aria-label="ご予約ページを開く">
-   予約ページへ
-   </a>
+    <a href="{{ '/booking/' | relative_url | strip }}"
+       class="btn btn--cta"
+       aria-label="ご予約ページを開く">
+      予約ページへ
+    </a>
   </div>
 </section>
 
@@ -33,8 +34,8 @@ slug: home
 
     <div class="tiles">
 
-      <a href="{{ '/about/' | relative_url }}" class="tile">
-        <img src="{{ '/images/sections/counseling-room.jpg' | relative_url }}"
+      <a href="{{ '/about/' | relative_url | strip }}" class="tile">
+        <img src="{{ '/images/sections/counseling-room.jpg' | relative_url | strip }}"
              alt="静かな色調のカウンセリングルームの室内"
              class="tile__image"
              loading="lazy">
@@ -44,8 +45,8 @@ slug: home
         </div>
       </a>
 
-      <a href="{{ '/counselor/' | relative_url }}" class="tile">
-        <img src="{{ '/images/sections/booking.jpg' | relative_url }}"
+      <a href="{{ '/counselor/' | relative_url | strip }}" class="tile">
+        <img src="{{ '/images/sections/booking.jpg' | relative_url | strip }}"
              alt="書類とペンを持った専門家の手元"
              class="tile__image"
              loading="lazy">
@@ -56,51 +57,51 @@ slug: home
       </a>
 
       <div class="tile">
-  <img src="{{ '/images/sections/online.jpg' | relative_url }}"
-       alt="自宅でパソコン画面を見つめる人物のイメージ"
-       class="tile__image"
-       loading="lazy">
-  <div class="tile__content">
-    <h3 class="tile__title">オンライン対応</h3>
-    <p>ご自宅からのオンラインカウンセリングに対応</p>
-  </div>
-  </div>
+        <img src="{{ '/images/sections/online.jpg' | relative_url | strip }}"
+             alt="自宅でパソコン画面を見つめる人物のイメージ"
+             class="tile__image"
+             loading="lazy">
+        <div class="tile__content">
+          <h3 class="tile__title">オンライン対応</h3>
+          <p>ご自宅からのオンラインカウンセリングに対応</p>
+        </div>
+      </div>
 
-     <a href="{{ '/contents/privacy-policy-paz.pdf' | relative_url }}"
-   class="tile"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="プライバシーポリシー（PDF）を新規タブで開く">
-  <img src="{{ '/images/sections/holding-hands-illustration.png' | relative_url }}"
-       alt="優しく手を握り合うイラストレーション"
-       class="tile__image"
-       loading="lazy">
-  <div class="tile__content">
-    <h3 class="tile__title">プライバシー重視</h3>
-    <p>個人情報と記録を厳格に管理し、安心に配慮</p>
-  </div>
-</a>
+      <a href="{{ '/contents/privacy-policy-paz.pdf' | relative_url | strip }}"
+         class="tile"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="プライバシーポリシー（PDF）を新規タブで開く">
+        <img src="{{ '/images/sections/holding-hands-illustration.png' | relative_url | strip }}"
+             alt="優しく手を握り合うイラストレーション"
+             class="tile__image"
+             loading="lazy">
+        <div class="tile__content">
+          <h3 class="tile__title">プライバシー重視</h3>
+          <p>個人情報と記録を厳格に管理し、安心に配慮</p>
+        </div>
+      </a>
 
-<a href="https://www.mhlw.go.jp/web/t_doc?dataId=80ab4905&dataType=0&pageNo=1"
-   class="tile tile--compliance"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="厚生労働省 公認心理師法（外部）を開く"
-   style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100%; padding: 40px 20px;">
-  
-  <div class="tile__content">
-    <h3 class="tile__title" style="margin-bottom: 12px;">コンプライアンス遵守</h3>
-    <p style="margin-bottom: 16px;">公認心理師法に基づき、法令・守秘義務を厳守</p>
-    <small style="display: block; opacity: 0.8;">（外部リンク: 厚生労働省 公認心理師法）</small>
-  </div>
-</a>
+      <a href="https://www.mhlw.go.jp/web/t_doc?dataId=80ab4905&dataType=0&pageNo=1"
+         class="tile tile--compliance"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="厚生労働省 公認心理師法（外部）を開く"
+         style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100%; padding: 40px 20px;">
+        
+        <div class="tile__content">
+          <h3 class="tile__title" style="margin-bottom: 12px;">コンプライアンス遵守</h3>
+          <p style="margin-bottom: 16px;">公認心理師法に基づき、法令・守秘義務を厳守</p>
+          <small style="display: block; opacity: 0.8;">（外部リンク: 厚生労働省 公認心理師法）</small>
+        </div>
+      </a>
 
       <a href="https://lin.ee/KoUph8Z"
          class="tile"
          target="_blank"
          rel="noopener noreferrer"
          aria-label="LINE公式アカウント（外部）を開く">
-        <img src="{{ '/images/sections/line-contact.png' | relative_url }}"
+        <img src="{{ '/images/sections/line-contact.png' | relative_url | strip }}"
              alt="スマートフォンに表示されたLINEの問い合わせ画面"
              class="tile__image"
              loading="lazy">
