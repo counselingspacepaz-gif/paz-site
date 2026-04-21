@@ -1,26 +1,46 @@
 ---
 layout: default
 title: 読みもの
+description: pazの考え方や、こころに向き合う視点をまとめた読みものです。必要なときに、お読みください。
 permalink: /blog/
+hero_image: /images/hero/morning-woods.png
 ---
 
-<section class="section note-feed">
-  <div class="inner">
-    <h1>読みもの</h1>
+<section class="hero section section--hero section--hero-light">
+  <div class="hero__bg"
+       style="background-image: url('{{ "/images/hero/morning-woods.png" | relative_url }}');">
+  </div>
 
-    <p>
-      思考の記録やコラムは、noteで綴っています。<br>
-      最新の記事をこちらに掲載しています。
+  <div class="hero__content inner">
+    <h1 class="hero__title">読みもの</h1>
+
+    <p class="hero__subtitle">
+      <span class="hero__line-break">
+        考えるための余白を、ここに。
+      </span>
     </p>
-
-    <div id="note-rss" class="note-rss-list">
-      <p>最新の記事を読み込んでいます…</p>
-    </div>
-
-    <div class="note-all-link">
-      <a href="https://note.com/noted_pipit7032" target="_blank" rel="noopener noreferrer">
-        すべての記事を note で読む
-      </a>
-    </div>
   </div>
 </section>
+
+<div id="main">
+  <section class="section note-feed">
+    <div class="inner">
+      <p>
+        思考の記録やコラムは、noteで綴っています。<br>
+        最新の記事をこちらに掲載しています。
+      </p>
+
+      <div id="note-rss" class="note-rss-list">
+        <p>最新の記事を読み込んでいます…</p>
+      </div>
+
+      <div class="note-all-link">
+        <a href="https://note.com/noted_pipit7032"
+           target="_blank"
+           rel="noopener noreferrer">
+          すべての記事を note で読む
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
