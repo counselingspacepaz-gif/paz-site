@@ -24,7 +24,7 @@ plugins:
 
 # --- キャッシュバスター ---
 # 修正日基準で更新
-asset_version: "20260413-1"
+asset_version: "20260421-1"
 
 # --- デフォルト設定 ---
 defaults:
