@@ -876,3 +876,26 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
         font-size: 1.4rem;
     }
 }
+/* 読みもの用：軽量ヒーロー */
+.section--hero-light {
+  height: 40vh;
+  min-height: 300px;
+}
+
+.section--hero-light .hero__content {
+  background: rgba(255, 255, 255, 0.75);
+  /* もし可能ならこれを足すと、霧のような質感が深まるぞ */
+  /* backdrop-filter: blur(4px); */
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.section--hero-light .hero__subtitle {
+  font-size: 0.95em;
+  opacity: 0.9;
+}
+
+.section--hero-light .btn,
+.section--hero-light .hero__text {
+  display: none;
+}
