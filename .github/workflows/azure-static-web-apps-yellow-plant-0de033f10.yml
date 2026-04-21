@@ -9,13 +9,14 @@ jobs:
   build_and_deploy_job:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    # locale を env に直書きして環境を固定する
+    # 1. システム標準のUTF-8ロケールを使用し、日本語解釈の基盤を作る
     env:
-      LANG: ja_JP.UTF-8
-      LC_ALL: ja_JP.UTF-8
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
@@ -26,10 +27,14 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      - name: Install gems and Build Jekyll
+      - name: Build Jekyll
+        # 2. Ruby実行オプションでUTF-8を強制し、Jekyllのエンコードエラーを封殺
+        env:
+          JEKYLL_ENV: production
+          RUBYOPT: "-EUTF-8:UTF-8"
         run: |
           bundle install
-          JEKYLL_ENV=production bundle exec jekyll build
+          bundle exec jekyll build
 
       - name: Build And Deploy
         uses: Azure/static-web-apps-deploy@v1
@@ -37,9 +42,9 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          # 指摘通りスラッシュを除去。Jekyllが生成したディレクトリを正確に指定
+          # 3. Jekyllが生成した完成品（_site）を正確に指定
           app_location: "_site"
           api_location: ""
           output_location: ""
-          # Azure側の Oryx ビルドをスキップさせる
+          # 4. Azure側の余計なビルド（Oryx）をスキップさせ、二重ビルドを阻止
           skip_app_build: true
