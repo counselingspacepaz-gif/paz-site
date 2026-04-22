@@ -1,47 +1,26 @@
 ---
 layout: default
 title: 読みもの
-description: pazの考え方や、こころに向き合う視点をまとめた読みものです。必要なときに、静かにお読みください。
+description: pazの考え方をまとめた読みものです。必要なときに、お読みください。
 permalink: /blog/
-# フォルダ構成に合わせてパスを修正
-hero_image: /blog/morning-woods.png
+# 画像パスを「素材の場所」に正しく修正
+hero_image: /images/blog/morning-woods.png
 ---
 
 <section class="hero section section--hero section--hero-light">
+  {% comment %} 
+    変数を分離(Split)し、stripで不純物を消し、relative_urlでbaseurlを確実に適用する 
+  {% endcomment %}
+  {% assign hero_img_path = page.hero_image | relative_url | strip %}
+  
   <div class="hero__bg"
-       style="background-image: url('{{ "/image/blog/morning-woods.png" | relative_url }}');">
+       style="background-image: url('{{ hero_img_path }}');">
   </div>
 
   <div class="hero__content inner">
     <h1 class="hero__title">読みもの</h1>
-
     <p class="hero__subtitle">
-      <span class="hero__line-break">
-        考えるための余白を、ここに。
-      </span>
+      <span class="hero__line-break">何かここからヒントが生まれればいいなと思って書きました。</span>
     </p>
   </div>
 </section>
-
-<div id="main">
-  <section class="section note-feed">
-    <div class="inner">
-      <p>
-        思考の記録やコラムは、noteで綴っています。<br>
-        最新の記事をこちらに掲載しています。
-      </p>
-
-      <div id="note-rss" class="note-rss-list">
-        <p>最新の記事を読み込んでいます…</p>
-      </div>
-
-      <div class="note-all-link">
-        <a href="https://note.com/noted_pipit7032"
-           target="_blank"
-           rel="noopener noreferrer">
-          すべての記事を note で読む
-        </a>
-      </div>
-    </div>
-  </section>
-</div>
