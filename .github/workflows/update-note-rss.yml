@@ -1,5 +1,8 @@
 name: Update note RSS
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   schedule:
@@ -22,7 +25,7 @@ jobs:
         run: |
           mkdir -p _data
           curl -s https://note.com/noted_pipit7032/rss \
-          | yq -p=xml -o=yaml \
+          | yq -p=xml -o=yaml '.' \
           > _data/note.yml
 
       - name: Commit updated RSS
@@ -32,4 +35,3 @@ jobs:
           git add _data/note.yml
           git commit -m "Update note RSS" || exit 0
           git push
-
