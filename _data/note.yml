@@ -1,0 +1,35 @@
+name: Update note RSS
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  fetch_rss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yq
+        run: |
+          # 権限の要らないローカルディレクトリへダウンロードし、実行権限を与える
+          mkdir -p $HOME/.local/bin
+          wget -O $HOME/.local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          chmod +x $HOME/.local/bin/yq
+          # パスを通す
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Fetch note RSS and convert to YAML
+        run: |
+          curl -s https://note.com/noted_pipit7032/rss \
+          | yq -p=xml -o=yaml '.' \
+          > _data/note.yml
+
+      - name: Commit updated RSS
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add _data/note.yml
+          git commit -m "Update note RSS" || exit 0
+          git push

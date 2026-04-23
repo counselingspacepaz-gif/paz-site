@@ -1,15 +1,15 @@
 ---
 layout: default
 title: 読みもの
-description: pazの考え方をまとめた読みものです。必要なときに、お読みください。
+description: pazの考え方や、こころに向き合う視点をまとめた読みものです。必要なときに、静かにお読みください。
 permalink: /blog/
-# 画像パスを「素材の場所」に正しく修正
+# 画像パスを素材の場所に正確に合わせる
 hero_image: /images/blog/morning-woods.png
 ---
 
 <section class="hero section section--hero section--hero-light">
   {% comment %} 
-    変数を分離(Split)し、stripで不純物を消し、relative_urlでbaseurlを確実に適用する 
+    変数を分離し、不純物を消し、baseurl（/paz-site）を確実に適用する 
   {% endcomment %}
   {% assign hero_img_path = page.hero_image | relative_url | strip %}
   
@@ -19,8 +19,56 @@ hero_image: /images/blog/morning-woods.png
 
   <div class="hero__content inner">
     <h1 class="hero__title">読みもの</h1>
+
     <p class="hero__subtitle">
-      <span class="hero__line-break">何かここからヒントが生まれればいいなと思って書きました。</span>
+      <span class="hero__line-break">
+        考えるための余白を、ここに。
+      </span>
     </p>
+
+    {% comment %} 短いコメント（hero__text）を復活させるならここ {% endcomment %}
+    <p class="hero__text">pazの視点、こころの記録</p>
   </div>
 </section>
+
+<div id="main">
+  <section class="section note-feed">
+    <div class="inner">
+
+      <p class="note-intro">
+        思考の記録やコラムは
+        <a href="https://note.com/noted_pipit7032" target="_blank" rel="noopener noreferrer">note</a>
+        で綴っています。最新の記事はこちらです。
+      </p>
+
+      {% if site.data.note.rss.channel.item %}
+        <ul class="note-list">
+          {% for item in site.data.note.rss.channel.item limit:5 %}
+            <li class="note-item">
+              <a href="{{ item.link | strip }}" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="note-link">
+                <span class="note-title">{{ item.title }}</span>
+              </a>
+              <small class="note-date">{{ item.pubDate | date: "%Y.%m.%d" }}</small>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        {% comment %} データがまだ無い場合のフォールバック {% endcomment %}
+        <p class="note-loading">記事を準備中です。直接 note をご確認ください。</p>
+      {% endif %}
+
+      <div class="note-all-link">
+        <a href="https://note.com/noted_pipit7032"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn--secondary">
+          すべての記事を note で読む
+        </a>
+      </div>
+      
+    </div>
+  </section>
+</div>
