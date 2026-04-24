@@ -8,10 +8,9 @@ rss:
   channel:
     title: Counseling Space paz
     description: |-
-      はじめまして。カウンセリングスペース paz です。
-      paz（パス）は、静岡県沼津市を拠点に、
-      女性と子どもを中心とした心理支援を行っているカウンセリングスペースです。
-      日々の臨床で考えていることや、こころの背景にある視点を、立ち止まりやすい言葉で綴っています。
+      カウンセリングスペース paz です。▶︎ 公式サイト：https://counselingspacepaz.com
+      paz（パス）は、静岡県沼津市を拠点に、女性と子どもを中心とした心理支援を行っています。
+      日々の臨床で考えていることやこころの背景にある視点を綴っています。
     link: https://note.com/noted_pipit7032
     atom:link:
       +@rel: self
@@ -28,11 +27,19 @@ rss:
       +@id: UA-48687000-1
       +@engine: GoogleAnalytics
     language: ja
-    lastBuildDate: Fri, 24 Apr 2026 11:38:34 +0900
+    lastBuildDate: Fri, 24 Apr 2026 17:03:47 +0900
     item:
+      - title: この場所で大切にしていること
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/270003356/rectangle_large_type_2_a6165793c15ea36160dfc0ea740521f8.jpeg?width=800
+        description: <p name="f17a6e7e-5e20-4d63-b1ca-29b0380bfbf1" id="f17a6e7e-5e20-4d63-b1ca-29b0380bfbf1"><strong>違和感から始める</strong></p><p name="453fa71c-41a6-4d65-bbdc-7e7f39d5d9c3" id="453fa71c-41a6-4d65-bbdc-7e7f39d5d9c3">世の中には、型に嵌まった「正しさ」や、効率的な「解決」が溢れています。 私がカウンセリングスペース paz を作ったのは、そうした世間の「当たり前」と、目の前の誰かが抱える「言いようのない苦しさ」との間にある、埋まらない溝に違和感を覚えたからです。</p><br/><a href='https://note.com/noted_pipit7032/n/nabc385e1ed3c'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Fri, 24 Apr 2026 16:37:09 +0900
+        link: https://note.com/noted_pipit7032/n/nabc385e1ed3c
+        guid: https://note.com/noted_pipit7032/n/nabc385e1ed3c
       - title: 【お知らせ】料金改定と予約システムについて
         media:thumbnail: https://assets.st-note.com/production/uploads/images/269911796/rectangle_large_type_2_78110004ef1a61b628270fe3d6252fb1.jpeg?width=800
-        description: <p name="f76363f6-0789-4825-b7d3-caf0b043adad" id="f76363f6-0789-4825-b7d3-caf0b043adad">このたび、<strong>2026年5月より料金の改定</strong>を実施し、あわせて <strong>予約システム（Microsoft Bookings）およびホームページのリニューアル</strong>を行います。まずは本お知らせにて、ご案内申し上げます。</p><p name="8c99173f-9341-403d-978e-e7d02316e95b" id="8c99173f-9341-403d-978e-e7d02316e95b"><br></p><br/><a href='https://note.com/noted_pipit7032/n/n731564661102'>続きをみる</a>
+        description: <p name="f76363f6-0789-4825-b7d3-caf0b043adad" id="f76363f6-0789-4825-b7d3-caf0b043adad">このたび、<strong>2026年5月より料金の改定</strong>を実施し、あわせて <strong>予約システム（Microsoft Bookings）およびホームページのリニューアル</strong>を行っております。</p><p name="8c99173f-9341-403d-978e-e7d02316e95b" id="8c99173f-9341-403d-978e-e7d02316e95b"><br></p><br/><a href='https://note.com/noted_pipit7032/n/n731564661102'>続きをみる</a>
         note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
         note:creatorName: Counseling Space paz
         pubDate: Fri, 24 Apr 2026 09:36:03 +0900
