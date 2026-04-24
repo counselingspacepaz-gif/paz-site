@@ -28,6 +28,45 @@ slug: home
   </div>
 </section>
 
+<section class="section top-news-section">
+  <div class="inner">
+    {% assign raw_data = site.data.note.rss.channel.item %}
+    
+    {% if raw_data %}
+      {% comment %} 配列正規化 {% endcomment %}
+      {% if raw_data.title %}
+        {% assign all_items = "" | split: "," | push: raw_data %}
+      {% else %}
+        {% assign all_items = raw_data %}
+      {% endif %}
+
+      {% comment %} 
+        forループで全件走査し、条件に合う「最初の1件」を見つけたら表示して break する
+      {% endcomment %}
+      {% assign news_found = false %}
+      
+      {% for item in all_items %}
+        {% if item.title contains 'お知らせ' %}
+          <div class="top-news-content">
+            <span class="news-label">Notice</span>
+            <span class="news-date">{{ item.pubDate | date: "%Y.%m.%d" }}</span>
+            <a href="{{ item.link | strip }}" target="_blank" rel="noopener noreferrer" class="news-link">
+              {{ item.title }}
+            </a>
+          </div>
+          {% assign news_found = true %}
+          {% break %} {% comment %} 1件見つかったら即終了 {% endcomment %}
+        {% endif %}
+      {% endfor %}
+
+      {% unless news_found %}
+        {% comment %} お知らせが見つからない場合は何も出さない、あるいは静かに一行置く {% endcomment %}
+        <p class="news-empty">現在、新しいお知らせはありません。</p>
+      {% endunless %}
+    {% endif %}
+  </div>
+</section>
+
 <section class="section section--tiles">
   <div class="inner">
     <h2 class="section__title">pazの特徴</h2>
