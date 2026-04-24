@@ -28,33 +28,34 @@ hero_image: /images/blog/morning-woods.png
         で綴っています。最新の記事はこちらです。
       </p>
 
-      {% comment %} データの階層を変数に格納 {% endcomment %}
-      {% assign items = site.data.note.rss.channel.item %}
+      {% comment %} 
+        【正規化ロジック：ぐりこスペシャル】
+        配列か単一オブジェクトかを厳密に判定し、常に配列（note_items）として扱う
+      {% endcomment %}
+      {% assign raw_item = site.data.note.rss.channel.item %}
+      
+      {% if raw_item == nil %}
+        {% assign note_items = nil %}
+      {% elsif raw_item.first and raw_item.size != nil %}
+        {% comment %} 配列（複数記事）の場合 {% endcomment %}
+        {% assign note_items = raw_item %}
+      {% else %}
+        {% comment %} 単一オブジェクト（1記事のみ）を配列に格納 {% endcomment %}
+        {% assign note_items = "" | split: "," | push: raw_item %}
+      {% endif %}
 
-      {% if items %}
+      {% if note_items and note_items.size > 0 %}
         <ul class="note-list">
-          {% if items.first %}
-            {% comment %} 複数記事がある場合（配列） {% endcomment %}
-            {% for item in items limit:5 %}
-              <li class="note-item">
-                <a href="{{ item.link | strip }}" target="_blank" rel="noopener noreferrer" class="note-link">
-                  <span class="note-title">{{ item.title }}</span>
-                </a>
-                <small class="note-date">{{ item.pubDate | date: "%Y.%m.%d" }}</small>
-              </li>
-            {% endfor %}
-          {% else %}
-            {% comment %} 記事が1つだけの場合（単一オブジェクト） {% endcomment %}
+          {% for item in note_items limit:5 %}
             <li class="note-item">
-              <a href="{{ items.link | strip }}" target="_blank" rel="noopener noreferrer" class="note-link">
-                <span class="note-title">{{ items.title }}</span>
+              <a href="{{ item.link | strip }}" target="_blank" rel="noopener noreferrer" class="note-link">
+                <span class="note-title">{{ item.title }}</span>
               </a>
-              <small class="note-date">{{ items.pubDate | date: "%Y.%m.%d" }}</small>
+              <small class="note-date">{{ item.pubDate | date: "%Y.%m.%d" }}</small>
             </li>
-          {% endif %}
+          {% endfor %}
         </ul>
       {% else %}
-        {% comment %} データが取得できていない、またはファイルが空の場合 {% endcomment %}
         <p class="note-loading">記事を準備中です。直接 note をご確認ください。</p>
       {% endif %}
 
