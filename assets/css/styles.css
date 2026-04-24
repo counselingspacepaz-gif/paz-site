@@ -899,3 +899,52 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
 .section--hero-light .hero__text {
   display: none;
 }
+
+/* ==========================================================================
+   blog/index.html 読みものエリアの微調整
+   ========================================================================== */
+
+/* 記事エリア全体を中央に寄せ、圧迫感を逃がす */
+.note-feed .inner {
+  max-width: 800px;  /* 視線が泳がない、読みやすい幅に制限 */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;    /* 上部の余白を確保 */
+  padding-bottom: 60px; /* 下部の余白を確保 */
+}
+
+/* イントロ文とリストの間に呼吸を */
+.note-intro {
+  margin-bottom: 40px;
+}
+
+/* 記事リスト：各項目の間隔を広げ、一つ一つを大切に扱う */
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px; /* 下のボタンとの距離 */
+}
+
+.note-item {
+  margin-bottom: 24px; /* 記事同士の縦の余白 */
+  padding-bottom: 16px;
+  border-bottom: 1px dashed #eee; /* 静かな区切り線（不要なら削除可） */
+}
+
+.note-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* 記事リンク内の要素配置 */
+.note-link {
+  display: flex;
+  flex-direction: column; /* 日付とタイトルを縦に並べる（左揃え維持） */
+  gap: 4px;
+}
+
+/* noteボタン：急かさないように、十分な距離を置いて配置 */
+.note-all-link {
+  margin-top: 60px;
+  text-align: center; /* ボタンだけは中央に置くことで、セクションの終わりを示す */
+}
