@@ -29,21 +29,21 @@ hero_image: /images/blog/morning-woods.png
       </p>
 
       {% comment %} 
-        エスティニアンの「強引さ」と、私の「確実性」を合わせた正規化
+        提示されたYAML構造に基づき、rss -> channel -> item を取得
       {% endcomment %}
       {% assign raw_data = site.data.note.rss.channel.item %}
       
       {% if raw_data %}
         {% comment %} 
-          Jekyllで最も安全な配列化：
-          一度「空の配列」を作り、そこにデータを push する。
-          もし既に配列なら、そのまま push すると「配列の配列」になるのを防ぐため、
-          first判定を挟むのが定石だ。
+          Jekyll（Liquid）での配列正規化
+          1件（オブジェクト）なら配列に入れ直し、複数ならそのまま使う
         {% endcomment %}
-        {% if raw_data.first %}
-          {% assign note_items = raw_data %}
-        {% else %}
+        {% if raw_data.title %}
+          {% comment %} titleが直接取れる = 1件のオブジェクト {% endcomment %}
           {% assign note_items = "" | split: "," | push: raw_data %}
+        {% else %}
+          {% comment %} それ以外 = すでに配列 {% endcomment %}
+          {% assign note_items = raw_data %}
         {% endif %}
 
         <ul class="note-list">
@@ -52,7 +52,10 @@ hero_image: /images/blog/morning-woods.png
               <a href="{{ item.link | strip }}" target="_blank" rel="noopener noreferrer" class="note-link">
                 <span class="note-title">{{ item.title }}</span>
               </a>
-              <small class="note-date">{{ item.pubDate | date: "%Y.%m.%d" }}</small>
+              <small class="note-date">
+                {% comment %} pubDate を 2026.04.21 形式へ整形 {% endcomment %}
+                {{ item.pubDate | date: "%Y.%m.%d" }}
+              </small>
             </li>
           {% endfor %}
         </ul>
