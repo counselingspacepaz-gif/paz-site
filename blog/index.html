@@ -29,22 +29,23 @@ hero_image: /images/blog/morning-woods.png
       </p>
 
       {% comment %} 
-        【正規化ロジック：ぐりこスペシャル】
-        配列か単一オブジェクトかを厳密に判定し、常に配列（note_items）として扱う
+        エスティニアンの「強引さ」と、私の「確実性」を合わせた正規化
       {% endcomment %}
-      {% assign raw_item = site.data.note.rss.channel.item %}
+      {% assign raw_data = site.data.note.rss.channel.item %}
       
-      {% if raw_item == nil %}
-        {% assign note_items = nil %}
-      {% elsif raw_item.first and raw_item.size != nil %}
-        {% comment %} 配列（複数記事）の場合 {% endcomment %}
-        {% assign note_items = raw_item %}
-      {% else %}
-        {% comment %} 単一オブジェクト（1記事のみ）を配列に格納 {% endcomment %}
-        {% assign note_items = "" | split: "," | push: raw_item %}
-      {% endif %}
+      {% if raw_data %}
+        {% comment %} 
+          Jekyllで最も安全な配列化：
+          一度「空の配列」を作り、そこにデータを push する。
+          もし既に配列なら、そのまま push すると「配列の配列」になるのを防ぐため、
+          first判定を挟むのが定石だ。
+        {% endcomment %}
+        {% if raw_data.first %}
+          {% assign note_items = raw_data %}
+        {% else %}
+          {% assign note_items = "" | split: "," | push: raw_data %}
+        {% endif %}
 
-      {% if note_items and note_items.size > 0 %}
         <ul class="note-list">
           {% for item in note_items limit:5 %}
             <li class="note-item">
