@@ -28,13 +28,21 @@ rss:
       +@id: UA-48687000-1
       +@engine: GoogleAnalytics
     language: ja
-    lastBuildDate: Fri, 24 Apr 2026 04:08:33 +0900
+    lastBuildDate: Fri, 24 Apr 2026 11:38:34 +0900
     item:
-      title: 変わらないために、新しく整えるということ
-      media:thumbnail: https://assets.st-note.com/production/uploads/images/269093875/rectangle_large_type_2_c5ecc71d2927ab6785762b189ebffaab.png?width=800
-      description: <p name="ac78813a-aa4e-4055-8530-5e68026997f1" id="ac78813a-aa4e-4055-8530-5e68026997f1">「paz（パス）」という場所を整え直しながら、<br>私は改めて考えていました。<br><br>ここから何かを届けようとしているのだろう、と。<br>理由はとてもシンプルで、<br>けれど少しだけ切実なものです。</p><hr name="951599e8-466b-44cb-8287-b43d0928264d" id="951599e8-466b-44cb-8287-b43d0928264d"><br/><a href='https://note.com/noted_pipit7032/n/n34e551a8cf82'>続きをみる</a>
-      note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
-      note:creatorName: Counseling Space paz
-      pubDate: Tue, 21 Apr 2026 12:13:47 +0900
-      link: https://note.com/noted_pipit7032/n/n34e551a8cf82
-      guid: https://note.com/noted_pipit7032/n/n34e551a8cf82
+      - title: 【お知らせ】料金改定と予約システムについて
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/269911796/rectangle_large_type_2_78110004ef1a61b628270fe3d6252fb1.jpeg?width=800
+        description: <p name="f76363f6-0789-4825-b7d3-caf0b043adad" id="f76363f6-0789-4825-b7d3-caf0b043adad">このたび、<strong>2026年5月より料金の改定</strong>を実施し、あわせて <strong>予約システム（Microsoft Bookings）およびホームページのリニューアル</strong>を行います。まずは本お知らせにて、ご案内申し上げます。</p><p name="8c99173f-9341-403d-978e-e7d02316e95b" id="8c99173f-9341-403d-978e-e7d02316e95b"><br></p><br/><a href='https://note.com/noted_pipit7032/n/n731564661102'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Fri, 24 Apr 2026 09:36:03 +0900
+        link: https://note.com/noted_pipit7032/n/n731564661102
+        guid: https://note.com/noted_pipit7032/n/n731564661102
+      - title: 変わらないために、新しく整えるということ
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/269093875/rectangle_large_type_2_c5ecc71d2927ab6785762b189ebffaab.png?width=800
+        description: <p name="ac78813a-aa4e-4055-8530-5e68026997f1" id="ac78813a-aa4e-4055-8530-5e68026997f1">「paz（パス）」という場所を整え直しながら、<br>私は改めて考えていました。<br><br>ここから何かを届けようとしているのだろう、と。<br>理由はとてもシンプルで、<br>けれど少しだけ切実なものです。</p><hr name="951599e8-466b-44cb-8287-b43d0928264d" id="951599e8-466b-44cb-8287-b43d0928264d"><br/><a href='https://note.com/noted_pipit7032/n/n34e551a8cf82'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Tue, 21 Apr 2026 12:13:47 +0900
+        link: https://note.com/noted_pipit7032/n/n34e551a8cf82
+        guid: https://note.com/noted_pipit7032/n/n34e551a8cf82
