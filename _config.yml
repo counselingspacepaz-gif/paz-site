@@ -4,8 +4,9 @@ email: "info@counselingspacepaz.com"
 description: |
   静岡県沼津市の女性と子どものためのカウンセリングスペースpaz。臨床心理士・公認心理師による、心の問題、育児、発達、家族関係の専門的な相談に対応しています。
 
-# GitHub Pages（/paz-site 配下公開）用
-baseurl: "/paz-site"
+# GitHub Pages 独自ドメイン運用（ルート直下公開）用
+# 旧設定 "/paz-site" から空文字に変更。これでパスの重複を解消する。
+baseurl: ""
 
 # 本番ドメインを正しく反映
 url: "https://counselingspacepaz.com"
@@ -23,8 +24,8 @@ plugins:
   - jekyll-feed
 
 # --- キャッシュバスター ---
-# 修正日基準で更新
-asset_version: "20260421-2"
+# 修正日基準で更新（ブラウザに最新のCSSを認識させる）
+asset_version: "20260428-1"
 
 # --- デフォルト設定 ---
 defaults:
@@ -39,4 +40,3 @@ collections:
   posts:
     output: true
     permalink: /blog/:year/:month/:day/:title/
-
