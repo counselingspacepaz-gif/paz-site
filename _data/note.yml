@@ -1,1 +1,63 @@
-+directive: DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
++p_xml: version="1.0" encoding="UTF-8"
+rss:
+  +@xmlns:webfeeds: http://webfeeds.org/rss/1.0
+  +@xmlns:note: https://note.com
+  +@xmlns:atom: http://www.w3.org/2005/Atom
+  +@xmlns:media: http://search.yahoo.com/mrss/
+  +@version: "2.0"
+  channel:
+    title: Counseling Space paz
+    description: |-
+      カウンセリングスペース paz です。▶︎ 公式サイト：https://counselingspacepaz.com
+      paz（パス）は、静岡県沼津市を拠点に、女性と子どもを中心とした心理支援を行っています。
+      日々の臨床で考えていることやこころの背景にある視点を綴っています。
+    link: https://note.com/noted_pipit7032
+    atom:link:
+      +@rel: self
+      +@type: application/rss+xml
+      +@href: https://note.com/noted_pipit7032/rss/
+    copyright: Counseling Space paz
+    webfeeds:icon: https://d2l930y2yx77uc.cloudfront.net/assets/default/default_note_logo_202212-f2394a9e5b60c49f48650eee13f6e75987c8c4f1cfa7555629a9697dc6015cd9.png
+    webfeeds:logo: https://d2l930y2yx77uc.cloudfront.net/assets/default/default_note_logo_202212-f2394a9e5b60c49f48650eee13f6e75987c8c4f1cfa7555629a9697dc6015cd9.png
+    webfeeds:accentColor: 249F80
+    webfeeds:related:
+      +@layout: card
+      +@target: browser
+    webfeeds:analytics:
+      +@id: UA-48687000-1
+      +@engine: GoogleAnalytics
+    language: ja
+    lastBuildDate: Sat, 06 Jun 2026 12:28:49 +0900
+    item:
+      - title: 過去の傷つきを、今の力に変える-EMDRについて
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/270779556/rectangle_large_type_2_03a866149d14cf09ed3843f12adb000d.png?width=800
+        description: <h3 name="ed36ac82-e00c-4626-953e-539049241dbb" id="ed36ac82-e00c-4626-953e-539049241dbb">——EMDRと、私が大切にしていること</h3><p name="e6d2372f-294f-449c-add9-390794ea61d0" id="e6d2372f-294f-449c-add9-390794ea61d0">「今の苦しさは、過去のせいなのだろうか」<br>「なぜ、あんなに前のことなのに、今もこんなに辛いんだろう」</p><br/><a href='https://note.com/noted_pipit7032/n/nf01a5fc718c5'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Mon, 27 Apr 2026 09:42:47 +0900
+        link: https://note.com/noted_pipit7032/n/nf01a5fc718c5
+        guid: https://note.com/noted_pipit7032/n/nf01a5fc718c5
+      - title: この場所で大切にしていること
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/270003356/rectangle_large_type_2_a6165793c15ea36160dfc0ea740521f8.jpeg?width=800
+        description: <p name="f17a6e7e-5e20-4d63-b1ca-29b0380bfbf1" id="f17a6e7e-5e20-4d63-b1ca-29b0380bfbf1"><strong>違和感から始める</strong></p><p name="453fa71c-41a6-4d65-bbdc-7e7f39d5d9c3" id="453fa71c-41a6-4d65-bbdc-7e7f39d5d9c3">世の中には、型に嵌まった「正しさ」や、効率的な「解決」が溢れています。 私がカウンセリングスペース paz を作ったのは、そうした世間の「当たり前」と、目の前の誰かが抱える「言いようのない苦しさ」との間にある、埋まらない溝に違和感を覚えたからです。</p><br/><a href='https://note.com/noted_pipit7032/n/nabc385e1ed3c'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Fri, 24 Apr 2026 16:37:09 +0900
+        link: https://note.com/noted_pipit7032/n/nabc385e1ed3c
+        guid: https://note.com/noted_pipit7032/n/nabc385e1ed3c
+      - title: 【お知らせ】料金改定と予約システムについて
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/269911796/rectangle_large_type_2_78110004ef1a61b628270fe3d6252fb1.jpeg?width=800
+        description: <p name="f76363f6-0789-4825-b7d3-caf0b043adad" id="f76363f6-0789-4825-b7d3-caf0b043adad">このたび、<strong>2026年5月より料金の改定</strong>を実施し、あわせて <strong>予約システム（Microsoft Bookings）およびホームページのリニューアル</strong>を行っております。</p><p name="8c99173f-9341-403d-978e-e7d02316e95b" id="8c99173f-9341-403d-978e-e7d02316e95b"><br></p><br/><a href='https://note.com/noted_pipit7032/n/n731564661102'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Fri, 24 Apr 2026 09:36:03 +0900
+        link: https://note.com/noted_pipit7032/n/n731564661102
+        guid: https://note.com/noted_pipit7032/n/n731564661102
+      - title: 変わらないために、新しく整えるということ
+        media:thumbnail: https://assets.st-note.com/production/uploads/images/269093875/rectangle_large_type_2_c5ecc71d2927ab6785762b189ebffaab.png?width=800
+        description: <p name="ac78813a-aa4e-4055-8530-5e68026997f1" id="ac78813a-aa4e-4055-8530-5e68026997f1">「paz（パス）」という場所を整え直しながら、<br>私は改めて考えていました。<br><br>ここから何かを届けようとしているのだろう、と。<br>理由はとてもシンプルで、<br>けれど少しだけ切実なものです。</p><hr name="951599e8-466b-44cb-8287-b43d0928264d" id="951599e8-466b-44cb-8287-b43d0928264d"><br/><a href='https://note.com/noted_pipit7032/n/n34e551a8cf82'>続きをみる</a>
+        note:creatorImage: https://assets.st-note.com/production/uploads/images/268885294/profile_d98c0326d491a41d1a5f129ac7688cff.png?fit=bounds&format=jpeg&quality=85&width=330
+        note:creatorName: Counseling Space paz
+        pubDate: Tue, 21 Apr 2026 12:13:47 +0900
+        link: https://note.com/noted_pipit7032/n/n34e551a8cf82
+        guid: https://note.com/noted_pipit7032/n/n34e551a8cf82
