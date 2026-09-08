@@ -16,9 +16,9 @@
 {% comment %}
     Jekyll SEO Tag プラグインを使用
     OGP画像が page.og_image で未定義の場合、
-    /images/sections/lavender-background.jpg をデフォルト画像として設定する。
+    /images/hero/lavender-background.jpg をデフォルト画像として設定する。
 {% endcomment %}
-{% assign default_og_image = '/images/sections/lavender-background.jpg' | relative_url %}
+{% assign default_og_image = '/images/hero/lavender-background.jpg' | relative_url %}
 {% if page.og_image %}
     {% seo %}
 {% else %}
