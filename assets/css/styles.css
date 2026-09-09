@@ -348,9 +348,18 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
     height: 32px; 
 }
 .policy-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
+}
+.policy-item {
+    flex: 0 1 calc((100% - 40px) / 3);
+    min-width: 240px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 .policy-intro {
     max-width: 800px;
@@ -370,7 +379,7 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
 }
 .policy-circumstances {
     max-width: 800px;
-    margin-top: 36px;
+    margin: 36px auto 0;
     padding: 24px 28px;
     background: #fff;
     border-radius: 8px;
@@ -418,6 +427,10 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
 }
 
 @media (max-width: 767px) {
+    .policy-item {
+        flex-basis: 100%;
+        min-width: 0;
+    }
     .section--terms {
         padding: 56px 0;
     }
