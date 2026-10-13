@@ -535,7 +535,7 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
     gap: 8px;
 }
 
-/* 電話番号のテキスト */
+/* 連絡先テキスト */
 .contact-info-small p {
     color: var(--color-primary) !important;
     font-weight: 700;
