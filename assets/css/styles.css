@@ -212,6 +212,31 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
 @media (min-width: 768px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
 
+.home-contact-guidance {
+    max-width: 760px;
+    margin: 40px auto 0;
+    padding: 24px 28px;
+    text-align: center;
+    background: #f7fbf6;
+    border: 1px solid #dce8d9;
+    border-radius: 10px;
+}
+.home-contact-guidance p {
+    line-height: 1.8;
+}
+.home-contact-guidance__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 28px;
+    margin-top: 12px;
+}
+.home-contact-guidance__links a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
 .tile {
     background: var(--color-white);
     border-radius: 16px;
@@ -366,6 +391,29 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
     margin: 0 0 30px;
     line-height: 1.9;
 }
+.policy-effective {
+    max-width: 800px;
+    margin: 0 auto 32px;
+    padding: 22px 26px;
+    background: #fffaf0;
+    border-left: 5px solid #c9a96e;
+    border-radius: 8px;
+}
+.policy-effective h3 {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+.policy-effective p {
+    line-height: 1.8;
+}
+.policy-effective__link {
+    margin-top: 8px;
+}
+.policy-effective__link a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
 .policy-item h3 { 
     font-size: 1rem; 
     border-bottom: 1px solid #E6E0F8; 
@@ -376,6 +424,33 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
     margin-top: 24px;
     font-size: 0.9rem;
     color: #555;
+}
+.policy-details {
+    max-width: 800px;
+    margin: 36px auto 0;
+    padding: 28px;
+    background: #fff;
+    border-radius: 8px;
+}
+.policy-details h3,
+.policy-contact h3 {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+.policy-details p,
+.policy-steps,
+.policy-circumstances ul,
+.policy-contact p {
+    line-height: 1.85;
+}
+.policy-steps,
+.policy-circumstances ul {
+    margin: 18px 0;
+    padding-left: 1.4rem;
+}
+.policy-steps li,
+.policy-circumstances li {
+    margin-bottom: 10px;
 }
 .policy-circumstances {
     max-width: 800px;
@@ -390,6 +465,26 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
 }
 .policy-circumstances p {
     line-height: 1.8;
+}
+.policy-contact {
+    max-width: 800px;
+    margin: 24px auto 0;
+    padding: 26px 28px;
+    background: #f7fbf6;
+    border: 1px solid #dce8d9;
+    border-radius: 8px;
+    text-align: center;
+}
+.policy-contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 28px;
+    margin-top: 16px;
+}
+.policy-contact__links a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 /* 利用規約・同意書 */
@@ -439,6 +534,12 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--color-secondary); line-height: 1
     }
     .terms-card {
         padding: 32px 20px;
+    }
+    .policy-effective,
+    .policy-details,
+    .policy-circumstances,
+    .policy-contact {
+        padding: 22px 18px;
     }
 }
 
