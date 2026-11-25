@@ -74,15 +74,17 @@
           info@counselingspacepaz.com
         </a>
       </p>
+      {% unless page.slug == 'home' %}
       <p>
         お問い合わせ・予約変更・キャンセルは、メールまたはLINEで受け付けています。
       </p>
+      {% endunless %}
     </div>
 
     <nav class="footer-sns" aria-label="SNSリンク">
       <ul class="sns-list">
         <li>
-          <a href="https://lin.ee/KoUph8Z" target="_blank" rel="noopener noreferrer">
+          <a href="https://lin.ee/KoUph8Z" target="_blank" rel="noopener noreferrer" aria-label="LINE公式アカウント">
             <img src="{{ '/images/icons/icon-line.png' | relative_url }}" alt="LINE" aria-hidden="true">
           </a>
         </li>

@@ -31,7 +31,7 @@ slug: home
 <section class="section top-news-section">
   <div class="inner">
     <h2>お知らせ</h2>
-    <p>お問い合わせ・予約変更・キャンセルはメールまたはLINEで受け付けています。<a href="{{ '/booking/' | relative_url }}#policy-title">12月からの予約変更・キャンセル条件を確認する</a></p>
+    <p><a href="{{ '/booking/' | relative_url }}#policy-title">12月からの予約変更・キャンセル条件を確認する</a></p>
     {% assign raw_data = site.data.note.rss.channel.item %}
     
     {% if raw_data %}
@@ -93,7 +93,7 @@ slug: home
              loading="lazy">
         <div class="tile__content">
           <h3 class="tile__title">専門的な支援</h3>
-          <p>臨床心理士・公認心理師が、経験と根拠に基づき支援</p>
+          <p>臨床心理士・公認心理師が、トラウマケア（EMDRを含む）や発達・思春期の心理支援を行います。</p>
         </div>
       </a>
 
@@ -137,27 +137,12 @@ slug: home
         </div>
       </a>
 
-      <a href="https://lin.ee/KoUph8Z"
-         class="tile"
-         target="_blank"
-         rel="noopener noreferrer"
-         aria-label="LINE公式アカウント（外部）を開く">
-        <img src="{{ '/images/sections/line-contact.png' | relative_url | strip }}"
-             alt="スマートフォンに表示されたLINEの問い合わせ画面"
-             class="tile__image"
-             loading="lazy">
-        <div class="tile__content">
-          <h3 class="tile__title">LINEでお問い合わせ</h3>
-          <p>LINEで気軽にお問い合わせいただけます</p>
-        </div>
-      </a>
-
     </div>
     <div class="home-contact-guidance">
       <p>お問い合わせ、予約変更・キャンセル、当日のご連絡は、メールまたはLINEで受け付けています。</p>
       <div class="home-contact-guidance__links">
         <a href="mailto:info@counselingspacepaz.com">メールで連絡する</a>
-        <a href="https://lin.ee/KoUph8Z" target="_blank" rel="noopener noreferrer">LINEで連絡する</a>
+        <a href="https://lin.ee/KoUph8Z" target="_blank" rel="noopener noreferrer">LINEで連絡する（返信目安：3営業日以内）</a>
       </div>
     </div>
   </div>
