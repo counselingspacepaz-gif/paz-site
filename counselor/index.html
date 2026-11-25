@@ -5,6 +5,7 @@ description: "臨床心理士・公認心理師が、静岡県沼津市で安心
 permalink: /counselor/
 hero_image: /images/hero/lavender-background.jpg
 slug: counselor
+counselor_name: "大河由美子"
 ---
 
 <section class="hero hero--home section section--hero" data-page-slug="{{ page.slug }}">
@@ -15,6 +16,7 @@ slug: counselor
       <span class="hero__line-break">あなたの話を、臨床心理士・公認心理師が</span>
       <span class="hero__line-break">静岡県沼津市で、安心して受け止めます</span>
     </p>
+    <p class="hero__text">主な専門分野は、トラウマケア（EMDR）、発達、思春期の心理支援です。</p>
     <a href="{{ '/booking/' | relative_url }}" class="btn btn--cta" aria-label="ご予約ページを開く">予約ページへ</a>
   </div>
 </section>
@@ -138,13 +140,8 @@ slug: counselor
                         <h2 style="color: #7d8b70; margin-bottom: 0.8em;">25年以上の経験と、人のしなやかな力を信じて</h2>
                     </header>
                     <p>心理の仕事に携わって、気づけば25年以上が経ちました。<br /><br />
-                    これまで、都内・市内の単科精神科病院、<br />
-                    小・中・高校でのスクールカウンセリング、<br />
-                    特別支援教育の相談現場、メンタルクリニックなど、<br />
-                    さまざまな場所で、多くの方と出会い、支援に携わってきました。<br /><br />
-                    そうした経験を重ねる中で、<br />
-                    「安心して話せる場所が必要だ」と感じ、<br />
-                    カウンセリングスペースpazを立ち上げました。<br /><br />
+                    精神科医療機関で勤務し、小・中・高校でのスクールカウンセリング、特別支援教育の相談、メンタルクリニックでの支援を経験しました。<br /><br />
+                    その経験を通じて「安心して話せる場所が必要だ」と感じ、カウンセリングスペースpazを開設しました。<br /><br />
                     どんなに困難な状況にあっても、<br />
                     人は回復し、前に進む力を持っています。<br />
                     私はこれまで、そうした人の強さとしなやかさに<br />
@@ -167,6 +164,9 @@ slug: counselor
                             <img src="{{ '/images/sections/me.png' | relative_url }}" alt="カウンセラー 似顔絵">
                         </div>
                         <h3>Counseling Space paz<br />カウンセラー</h3>
+                        {% if page.counselor_name %}
+                        <p><strong>{{ page.counselor_name | escape }}</strong></p>
+                        {% endif %}
                         <p style="font-size: 0.9em; color: #666; margin-bottom: 0;">
                             <strong>臨床心理士（12229号）<br />公認心理師（19946号）</strong>
                         </p>
